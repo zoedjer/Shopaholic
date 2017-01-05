@@ -11,7 +11,8 @@ import com.google.gson.Gson;
 
 @Component
 public class BeanConfig {
-
+	
+	//info required for database connection
     @Value("${spring.datasource.driver-class-name}")
     private String driver;
 
@@ -23,7 +24,8 @@ public class BeanConfig {
 
     @Value("${spring.datasource.url}")
     private String url;
-
+    
+    // local data source
     // @Bean
     // public DriverManagerDataSource dataSource() {
     // DriverManagerDataSource dmd = new DriverManagerDataSource();
@@ -33,7 +35,8 @@ public class BeanConfig {
     // dmd.setUrl(url);
     // return dmd;
     // }
-
+    
+    //RDS data source
     @Bean
     public DriverManagerDataSource dataSource() {
 	String dbName = System.getProperty("RDS_DB_NAME");
@@ -52,7 +55,8 @@ public class BeanConfig {
 	dmd.setSchema(dbName);
 	return dmd;
     }
-
+    
+    //manipulate json data
     @Bean
     public Gson gson() {
 	return new Gson();
