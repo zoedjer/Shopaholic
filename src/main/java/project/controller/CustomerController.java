@@ -20,70 +20,70 @@ import project.service.CustomerService;
 @Controller
 public class CustomerController {
 
-    @Autowired
-    private CustomerService customerService;
+	@Autowired
+	private CustomerService customerService;
 
-    @RequestMapping(path = PathVar.CUSTOMER_FRAGMENT, method = RequestMethod.GET)
-    @ResponseStatus(code = HttpStatus.OK)
-    public String getCustomer(HttpServletRequest req, Model model) {
+	@RequestMapping(path = PathVar.CUSTOMER_FRAGMENT, method = RequestMethod.GET)
+	@ResponseStatus(code = HttpStatus.OK)
+	public String getCustomer(HttpServletRequest req, Model model) {
 
-	Long curUserId = (Long) req.getSession().getAttribute("curUserId");
+		Long curUserId = (Long) req.getSession().getAttribute("curUserId");
 
-	// -1 mean all customer at one query, if not -1 means 10 customers from
-	// the value
-	List<Customer> cuslist = customerService.getAll(curUserId, -1);
+		// -1 mean all customer at one query, if not -1 means 10 customers from
+		// the value
+		List<Customer> cuslist = customerService.getAll(curUserId, -1);
 
-	model.addAttribute("customers", cuslist);
+		model.addAttribute("customers", cuslist);
 
-	return "customer";
-    }
+		return "customer";
+	}
 
-    @RequestMapping(path = PathVar.CUSTOMER_CREATE, method = RequestMethod.POST)
-    @ResponseStatus(code = HttpStatus.OK)
-    public String createCustomer(HttpServletRequest req, @RequestParam(value = "firstName") String firstName,
-	    @RequestParam(value = "lastName") String lastName, @RequestParam(value = "phone") String phone,
-	    @RequestParam(value = "email") String email, @RequestParam(value = "lineOne") String lineOne,
-	    @RequestParam(value = "lineTwo") String lineTwo, @RequestParam(value = "city") String city,
-	    @RequestParam(value = "county") String county, @RequestParam(value = "country") String country) {
+	@RequestMapping(path = PathVar.CUSTOMER_CREATE, method = RequestMethod.POST)
+	@ResponseStatus(code = HttpStatus.OK)
+	public String createCustomer(HttpServletRequest req, @RequestParam(value = "firstName") String firstName,
+			@RequestParam(value = "lastName") String lastName, @RequestParam(value = "phone") String phone,
+			@RequestParam(value = "email") String email, @RequestParam(value = "lineOne") String lineOne,
+			@RequestParam(value = "lineTwo") String lineTwo, @RequestParam(value = "city") String city,
+			@RequestParam(value = "county") String county, @RequestParam(value = "country") String country) {
 
-	Long curUserId = (Long) req.getSession().getAttribute("curUserId");
-	customerService.createCustomer(curUserId, firstName, lastName, phone, email, lineOne, lineTwo, city, county,
-		country);
+		Long curUserId = (Long) req.getSession().getAttribute("curUserId");
+		customerService.createCustomer(curUserId, firstName, lastName, phone, email, lineOne, lineTwo, city, county,
+				country);
 
-	return "index";
-    }
+		return "index";
+	}
 
-    @RequestMapping(path = PathVar.CUSTOMER_EDIT, method = RequestMethod.POST)
-    @ResponseStatus(code = HttpStatus.OK)
-    public String editCustomer(@RequestParam(value = "id") Long id, @RequestParam(value = "firstName") String firstName,
-	    @RequestParam(value = "lastName") String lastName, @RequestParam(value = "phone") String phone,
-	    @RequestParam(value = "email") String email, @RequestParam(value = "lineOne") String lineOne,
-	    @RequestParam(value = "lineTwo") String lineTwo, @RequestParam(value = "city") String city,
-	    @RequestParam(value = "county") String county, @RequestParam(value = "country") String country) {
+	@RequestMapping(path = PathVar.CUSTOMER_EDIT, method = RequestMethod.POST)
+	@ResponseStatus(code = HttpStatus.OK)
+	public String editCustomer(@RequestParam(value = "id") Long id, @RequestParam(value = "firstName") String firstName,
+			@RequestParam(value = "lastName") String lastName, @RequestParam(value = "phone") String phone,
+			@RequestParam(value = "email") String email, @RequestParam(value = "lineOne") String lineOne,
+			@RequestParam(value = "lineTwo") String lineTwo, @RequestParam(value = "city") String city,
+			@RequestParam(value = "county") String county, @RequestParam(value = "country") String country) {
 
-	customerService.editCustomer(id, firstName, lastName, phone, email, lineOne, lineTwo, city, county, country);
+		customerService.editCustomer(id, firstName, lastName, phone, email, lineOne, lineTwo, city, county, country);
 
-	return "index";
-    }
+		return "index";
+	}
 
-    @RequestMapping(path = PathVar.CUSTOMER_REMOVE, method = RequestMethod.POST)
-    @ResponseStatus(code = HttpStatus.OK)
-    public String removeCustomer(@RequestParam(value = "customerArray") long[] ids) {
+	@RequestMapping(path = PathVar.CUSTOMER_REMOVE, method = RequestMethod.POST)
+	@ResponseStatus(code = HttpStatus.OK)
+	public String removeCustomer(@RequestParam(value = "customerArray") long[] ids) {
 
-	customerService.removeCustomer(ids);
+		customerService.removeCustomer(ids);
 
-	return "index";
-    }
+		return "index";
+	}
 
-    @RequestMapping(path = PathVar.CUSTOMER_ADD_ADDRESS, method = RequestMethod.POST)
-    @ResponseStatus(code = HttpStatus.OK)
-    public String addAddress(@RequestParam(value = "customerId") Long id,
-	    @RequestParam(value = "lineOne") String lineOne, @RequestParam(value = "lineTwo") String lineTwo,
-	    @RequestParam(value = "city") String city, @RequestParam(value = "county") String county,
-	    @RequestParam(value = "country") String country) {
+	@RequestMapping(path = PathVar.CUSTOMER_ADD_ADDRESS, method = RequestMethod.POST)
+	@ResponseStatus(code = HttpStatus.OK)
+	public String addAddress(@RequestParam(value = "customerId") Long id,
+			@RequestParam(value = "lineOne") String lineOne, @RequestParam(value = "lineTwo") String lineTwo,
+			@RequestParam(value = "city") String city, @RequestParam(value = "county") String county,
+			@RequestParam(value = "country") String country) {
 
-	customerService.addAddress(id, lineOne, lineTwo, city, county, country);
+		customerService.addAddress(id, lineOne, lineTwo, city, county, country);
 
-	return "index";
-    }
+		return "index";
+	}
 }

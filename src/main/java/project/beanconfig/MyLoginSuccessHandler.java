@@ -18,7 +18,10 @@ public class MyLoginSuccessHandler extends SavedRequestAwareAuthenticationSucces
 
     @Autowired
     private UserService userService;
-
+    
+    /**
+     *  successfully login action
+     */
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 	    Authentication authentication) throws ServletException, IOException {

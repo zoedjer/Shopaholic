@@ -30,7 +30,12 @@ public class ReportController {
     private Object dataHolder;
 
     private boolean isChange = false;
-
+    /**
+     * get data graph
+     * @param req
+     * @param model
+     * @return
+     */
     @RequestMapping(path = PathVar.REPORT_FRAGMENT, method = RequestMethod.GET)
     @ResponseStatus(code = HttpStatus.OK)
     public String getReport(HttpServletRequest req, Model model) {
@@ -55,6 +60,12 @@ public class ReportController {
 	return "report";
     }
 
+    /**
+     * using date to get data graph
+     * @param req
+     * @param model
+     * @return
+     */
     @RequestMapping(path = PathVar.REPORT_FRAGMENT, method = RequestMethod.POST)
     @ResponseStatus(code = HttpStatus.OK)
     public String getProfit(HttpServletRequest req, Model model) {

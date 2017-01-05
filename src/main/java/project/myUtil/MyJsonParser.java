@@ -13,7 +13,12 @@ import com.google.gson.JsonParser;
 import project.entity.OrderedItem;
 
 public class MyJsonParser {
-
+/**
+ * parse complex string to json object, 
+ * convert json object to simple string, 
+ * store simple string into a map, 
+ * map will be used by Service layer 
+ */
     public static Map<String, Object> parseOrderStr(String orderStr) {
 
 	Map<String, Object> map = new HashMap<>();

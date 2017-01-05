@@ -12,7 +12,9 @@ import com.google.gson.Gson;
 @Component
 public class BeanConfig {
 	
-	//info required for database connection
+	/**
+	 * info required for database connection
+	 */
     @Value("${spring.datasource.driver-class-name}")
     private String driver;
 
@@ -26,17 +28,20 @@ public class BeanConfig {
     private String url;
     
     // local data source
-    // @Bean
-    // public DriverManagerDataSource dataSource() {
-    // DriverManagerDataSource dmd = new DriverManagerDataSource();
-    // dmd.setDriverClassName(driver);
-    // dmd.setUsername(user);
-    // dmd.setPassword(password);
-    // dmd.setUrl(url);
-    // return dmd;
-    // }
+//     @Bean
+//     public DriverManagerDataSource dataSource() {
+//     DriverManagerDataSource dmd = new DriverManagerDataSource();
+//     dmd.setDriverClassName(driver);
+//     dmd.setUsername(user);
+//     dmd.setPassword(password);
+//     dmd.setUrl(url);
+//     return dmd;
+//     }
     
-    //RDS data source
+    /**
+     * RDS data source
+     * @return
+     */
     @Bean
     public DriverManagerDataSource dataSource() {
 	String dbName = System.getProperty("RDS_DB_NAME");
@@ -56,7 +61,10 @@ public class BeanConfig {
 	return dmd;
     }
     
-    //manipulate json data
+    /**
+     * manipulate json data
+     * @return
+     */
     @Bean
     public Gson gson() {
 	return new Gson();

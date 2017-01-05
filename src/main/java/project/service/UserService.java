@@ -21,7 +21,9 @@ public class UserService {
     public boolean isExisting(String userEmail) {
 	return userTab.isExisting(userEmail);
     }
-    
+    /**
+     * encrypt user password
+     */
     public long createUser(String username, String email, String password) {
 	password = encode(password);
 	email = email.toLowerCase();

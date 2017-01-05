@@ -16,7 +16,10 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AuthenticationSuccessHandler successHandler;
-
+    
+    /**
+     * verify if user exists
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	auth.jdbcAuthentication().dataSource(dataSource)
@@ -26,8 +29,10 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /**
+     * url security
      * if any path is not working, try to see blocked!!!!!!!!
      */
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 	http.authorizeRequests().antMatchers("/login", "/register", "/registration", "/verifyUser").permitAll()

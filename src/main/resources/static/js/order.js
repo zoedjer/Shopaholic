@@ -93,7 +93,7 @@ $(document).ready(function() {
 							cln.append('<span><input class="it_inp item-num" type="text" value="1"/></span>');
 							cln.append('<span><input id="it_add" value="+" type="button"/></span>');
 							cln.append('<span><input id="it_rm" value="-" type="button"/></span>');
-							cln.append('<span>Price Sold: </span><input id="it_sold" value="'+ price +'" class="it_inp" type="text" />');
+							cln.append('<span>Original Price: </span><input id="it_sold" value="'+ price +'" class="it_inp" type="text" />');
 							cln.append('<span>€</span>');
 							cln.append('<input class="genBtnRm" type="button" value="remove" />');
 							cln.prependTo('#resultPad');
