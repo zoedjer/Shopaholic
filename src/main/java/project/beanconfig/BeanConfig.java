@@ -27,7 +27,10 @@ public class BeanConfig {
     @Value("${spring.datasource.url}")
     private String url;
     
-    // local data source
+    /**
+     * if want to test locally, uncomment this data source and comment RDS data source below,
+     * all info required for database connection is in application.properties
+     */
 //     @Bean
 //     public DriverManagerDataSource dataSource() {
 //     DriverManagerDataSource dmd = new DriverManagerDataSource();
@@ -40,7 +43,6 @@ public class BeanConfig {
     
     /**
      * RDS data source
-     * @return
      */
     @Bean
     public DriverManagerDataSource dataSource() {

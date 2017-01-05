@@ -175,7 +175,7 @@ $(document).ready(function() {
 		
 		console.log(jsonStr);	
 		$.ajax({
-			url: "http://localhost:7878/createOrder",
+			url: "http://sample-env-1.qy4cf6pmpk.eu-west-1.elasticbeanstalk.com/agent/data",
 			type: "post",
 			contentType: "application/text; charset=utf-8",
 		    dataType: "text",
@@ -196,7 +196,7 @@ $(document).ready(function() {
 		inval = "";
 
 		$.ajax({
-			url : "http://localhost:7878/agent/data",
+			url : "http://sample-env-1.qy4cf6pmpk.eu-west-1.elasticbeanstalk.com/agent/data",
 			type : "get",
 			dataType : "json",
 			data : "",
