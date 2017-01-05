@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Order</title>
+
+</head>
+<body>
+	<div id="orderTab">
+
+		<div id="postPad" class="cardwrap left">
+			<input type="button" class="wrapin" id="btn_dulp_post"
+				value="New Post" />
+			<div class="cardwrap-inner">
+				<div th:id="pa+${pa.id}" class="mycard " th:each="pa:${postagents}">
+
+					<p th:text="'Post Agent: ' + ${pa.name}"></p>
+					<p th:text="${pa.website}"></p>
+				</div>
+			</div>
+		</div>
+		<div id="customerPad" class="cardwrap left">
+			<input type="button" class="wrapin" id="btn_dulp_customer"
+				value="New Customer" />
+			<div class="cardwrap-inner">
+				<div th:id="customer+${cus.id}" class="mycard "
+					th:each="cus:${customers}">
+
+					<p>
+						<span th:text="${cus.first_name}"></span>&nbsp;<span
+							th:text="${cus.last_name}"></span>
+					</p>
+					<p th:text="${cus.phone}"></p>
+					<p th:text="${cus.email}"></p>
+					<p>
+						<span th:text="${cus.line_one}"></span>,&nbsp; <span
+							th:text="${cus.line_two}"></span>
+					</p>
+					<p>
+						<span th:text="${cus.city}"></span>,&nbsp; <span
+							th:text="${cus.county}"></span>,&nbsp; <span
+							th:text="${cus.country}"></span>
+					</p>
+
+				</div>
+			</div>
+		</div>
+
+		<div id="itemPad" class="cardwrap left ">
+			<input type="button" class="wrapin" id="btn_dulp_item"
+				value="New Item" />
+			<div class="cardwrap-inner">
+				<div th:id="item+${item.id}" class="mycard " th:each="item:${items}">
+
+					<p>
+						<span th:text="${item.name}" class="it-name"></span> <span>&nbsp;Price:&nbsp;</span>
+						<span th:text="${item.price}" class="it-price"></span> <span>&nbsp;€</span>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div id="resultPad" class="cardwrap cardwrap-order left ">
+			<div id="orderForm" style="margin: 5px">
+				<input type="text" id="track_num" placeholder="Tracking Number" />
+				<br /> <input id="btn_submit" type="button" value="Submit" />
+			</div>
+		</div>
+	</div>
+
+
+	<div>
+		<!-- create Customer form -->
+		<div class="popup" id="createCustomerDulp">
+			<form th:action="@{/createCustomer}" method="post"
+				id="createCustomerForm">
+				<table>
+					<tr>
+						<td>First Name:</td>
+						<td><input type="text" name="firstName" /></td>
+					</tr>
+					<tr>
+						<td>Last Name:</td>
+						<td><input type="text" name="lastName" /></td>
+					</tr>
+					<tr>
+						<td>Phone:</td>
+						<td><input type="text" name="phone" /></td>
+					</tr>
+					<tr>
+						<td>Email:</td>
+						<td><input type="email" name="email" /></td>
+					</tr>
+					<tr>
+						<td>Address Line 1:</td>
+						<td><input type="text" name="lineOne" /></td>
+					</tr>
+					<tr>
+						<td>Address Line 2:</td>
+						<td><input type="text" name="lineTwo" /></td>
+					</tr>
+					<tr>
+						<td>City:</td>
+						<td><input type="text" name="city" /></td>
+					</tr>
+					<tr>
+						<td>County:</td>
+						<td><input type="text" name="county" /></td>
+					</tr>
+					<tr>
+						<td>Country:</td>
+						<td><input type="text" name="country" /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" value="Submit" name="submit" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+		<!-- create Item form -->
+		<div class="popup" id="createItemDulp">
+			<form th:action="@{/createItem}" method="post" id="createItemForm">
+				<table>
+					<tr>
+						<td>Name:</td>
+						<td><input type="text" name="name" /></td>
+					</tr>
+					<tr>
+						<td>Category:</td>
+						<td><input type="text" name="category" /></td>
+					</tr>
+					<tr>
+						<td>Price:</td>
+						<td><input type="text" name="price" /></td>
+					</tr>
+					<tr>
+						<td>Brand:</td>
+						<td><input type="text" name="brand" /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" name="submit" value="Submit" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+		<!-- create post agent -->
+		<div class="popup" id="createPostDulp">
+			<form th:action="@{/createPostAgent}" method="post"
+				id="createPostAgentForm">
+				<table>
+					<tr>
+						<td>Name:</td>
+						<td><input type="text" name="postName" /></td>
+					</tr>
+					<tr>
+						<td>Website:</td>
+						<td><input type="text" name="postWebsite" /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" name="submit" value="Submit" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+
+	<script type="text/javascript" th:src="@{js/order.js}"></script>
+</body>
+</html>

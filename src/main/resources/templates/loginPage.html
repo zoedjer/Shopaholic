@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Login</title>
+<style>
+.login-box {
+	background-color: white;
+	max-width: 340px;
+	margin: 0 auto;
+	position: relative;
+	top: 80px;
+	padding-bottom: 30px;
+	border-radius: 5px;
+	box-shadow: 0 5px 50px rgba(0,0,0,0.4);
+	text-align: center;
+}
+
+.login-box .box-header, #fs {
+	background-color: #b35900;
+	margin-top: 0;
+	border-radius: 5px 5px 0 0;
+	color: white;
+}
+
+.box-header {
+	padding: 2px;
+	margin-bottom: 20px;
+}
+
+#fs {
+	border-radius: 5px;
+}
+
+.login-box label {
+	font-weight: 700;
+	font-size: .8em;
+	color: #666666;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	line-height: 2em;
+}
+
+.login-box input {
+	margin-bottom: 20px;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	font-size: .9em;
+	color: #000;
+}
+
+.login-box input:focus {
+	outline: none;
+	border-color: #665851;
+	transition: 0.5s;
+	color: #665851;
+}
+
+.login-box button {
+	margin-top: 0px;
+	border: 0;
+	border-radius: 2px;
+	color: white;
+	padding: 10px;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 0.7em;
+	letter-spacing: 1px;
+	background-color: #665851;
+	cursor:pointer;
+	outline: none;
+}
+
+.login-box button:hover {
+	opacity: 0.7;
+	transition: 0.5s;
+}
+
+input {
+	font-size: 15px;
+}
+
+</style>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+	<div id="loginDiv">
+		<form th:action="@{/login}" method="post" id="loginForm">
+
+			<div class="login-box">
+				<div class="box-header"><h1>SIGN IN</h1></div>
+				<label>User</label> <br /> 
+				<input type="text" name="username" /> <br />
+				<label>Password</label> <br /> 
+				<input type="password" name="password" id="pswd" /> <br /> 
+				<input type="submit" name="submit" id="fs" value="SIGN IN" /> <br /> 
+				<a th:href="@{/register}">REGISTER</a>
+			</div>
+
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+.container {
+	width: 100%;
+}
+
+.sidebar {
+	background-color: black;
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	text-align: center;
+	position: fixed;
+	width: 200px;
+}
+
+.popup, .infobar {
+	display: none;
+}
+
+.myactive {
+	background-color: #f0f0f0;
+}
+
+.infobar {
+	padding: 0 0 0 6px;
+	width: 82.5%;
+	position: absolute;
+	background-color: red;
+	font-size: 3em;
+	color: white;
+}
+
+#mcontent {
+	margin: 0 0 0 200px;
+	width: 950px;
+}
+
+.cardwrap {
+	width: 230px;
+	margin: 1px;
+	padding: 1px;
+}
+
+.wrapin {
+	margin: 0 0 2px 4px;
+	padding: 1px;
+}
+
+.cardwrap-inner {
+	overflow-y: scroll;
+	height: 93vh;
+}
+
+.cardwrap-order {
+	overflow-y: scroll;
+	height: 98vh;
+}
+
+.scrollTable {
+	overflow-y: scroll;
+	height: 70vh;
+}
+
+.mycard, .selcuscard, .selpacard, .selitcard, .cuscard {
+	padding: 0 5px 0 5px;
+	margin: 5px;
+	width: 200px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	border-radius: 5px;
+	background-color: white;
+}
+
+form {
+	margin: 5px;
+}
+
+#orderTab>#customerPad {
+	background-color: orange;
+}
+
+#orderTab>#postPad {
+	background-color: green;
+}
+
+#orderTab>#itemPad {
+	background-color: purple;
+}
+
+#orderTab>#resultPad {
+	background-color: #7ab7dd;
+}
+
+.left {
+	float: left;
+}
+
+.it_inp {
+	width: 60px;
+}

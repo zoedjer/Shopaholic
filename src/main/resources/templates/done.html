@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<title>Insert title here</title>
+<script>
+	$(document).ready(function() {
+		$('#btn1').click(function() {
+			$.ajax({
+				url: "http://localhost:7878/ex1",
+				type: "post",
+				data: "",
+				success: function(msg) {
+					alert(msg);
+					console.log(msg);
+				},
+				error : function(msg) {
+					alert(msg.responseText);
+					console.log(msg);
+				}
+				
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<div>
+		<input type="button" id="btn1" value="button" />
+	</div>
+
+
+</body>
+</html>

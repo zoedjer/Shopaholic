@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Customer</title>
+</head>
+<body>
+	<div>
+		<div>
+			<input id="btn_create" type="button" value="New Customer" /> <input
+				id="btn_remove" type="button" value="Remove Customer" /> <input
+				id="btn_addr" type="button" value="Add Address" />
+			<hr />
+			<div class="infobar" id="infomsg"></div>
+		</div>
+
+		<div class="scrollTable">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Phone</th>
+						<th>Email</th>
+						<th>Address</th>
+						<th>City</th>
+						<th>County</th>
+						<th>Country</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tr th:each="cus:${customers}">
+					<td><input class="id" type="checkbox" th:value="${cus.id}" /></td>
+					<td class="firstLastName"
+						th:text="${cus.first_name + ' ' + cus.last_name}"></td>
+					<td class="phone" th:text="${cus.phone}"></td>
+					<td class="email" th:text="${cus.email}"></td>
+					<td class="lineOneTwo"
+						th:text="${cus.line_one + ' ' + cus.line_two}"></td>
+					<td class="city" th:text="${cus.city}"></td>
+					<td class="county" th:text="${cus.county}"></td>
+					<td class="country" th:text="${cus.country}"></td>
+					<td><input class="rowbtn" type="button" value="Edit" /></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="popup" id="createCustomer">
+		<form th:action="@{/createCustomer}" method="post"
+			id="createCustomerForm">
+			<table>
+				<tr>
+					<td>First Name:</td>
+					<td><input type="text" name="firstName" /></td>
+				</tr>
+				<tr>
+					<td>Last Name:</td>
+					<td><input type="text" name="lastName" /></td>
+				</tr>
+				<tr>
+					<td>Phone:</td>
+					<td><input type="text" name="phone" /></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type="email" name="email" /></td>
+				</tr>
+				<tr>
+					<td>Address Line 1:</td>
+					<td><input type="text" name="lineOne" /></td>
+				</tr>
+				<tr>
+					<td>Address Line 2:</td>
+					<td><input type="text" name="lineTwo" /></td>
+				</tr>
+				<tr>
+					<td>City:</td>
+					<td><input type="text" name="city" /></td>
+				</tr>
+				<tr>
+					<td>County:</td>
+					<td><input type="text" name="county" /></td>
+				</tr>
+				<tr>
+					<td>Country:</td>
+					<td><input type="text" name="country" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Submit" name="submit" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<div class="popup" id="editCustomer">
+		<form th:action="@{/editCustomer}" method="post">
+			<table>
+				<tr>
+					<td>First Name:</td>
+					<td><input type="text" name="firstName" /></td>
+				</tr>
+				<tr>
+					<td>Last Name:</td>
+					<td><input type="text" name="lastName" /></td>
+				</tr>
+				<tr>
+					<td>Phone:</td>
+					<td><input type="text" name="phone" /></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type="email" name="email" /></td>
+				</tr>
+				<tr>
+					<td>Address Line 1:</td>
+					<td><input type="text" name="lineOne" /></td>
+				</tr>
+				<tr>
+					<td>Address Line 2:</td>
+					<td><input type="text" name="lineTwo" /></td>
+				</tr>
+				<tr>
+					<td>City:</td>
+					<td><input type="text" name="city" /></td>
+				</tr>
+				<tr>
+					<td>County:</td>
+					<td><input type="text" name="county" /></td>
+				</tr>
+				<tr>
+					<td>Country:</td>
+					<td><input type="text" name="country" /></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" name="id" /></td>
+					<td><input type="submit" value="Submit" name="submit" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<div class="popup" id="removeCustomer">
+		<form th:action="@{/removeCustomer}" method="post">
+			<p>Do you really want to remove them ?</p>
+			<input type="hidden" name="customerArray" /> <input type="submit"
+				value="YES" name="submit" />
+		</form>
+	</div>
+
+	<div class="popup" id="addAddress">
+		<form th:action="@{/addAddress}" method="post">
+			<table>
+				<tr>
+					<td>Line 1:</td>
+					<td><input type="text" name="lineOne" /></td>
+				</tr>
+				<tr>
+					<td>Line 2:</td>
+					<td><input type="text" name="lineTwo" /></td>
+				</tr>
+				<tr>
+					<td>City:</td>
+					<td><input type="text" name="city" /></td>
+				</tr>
+				<tr>
+					<td>County:</td>
+					<td><input type="text" name="county" /></td>
+				</tr>
+				<tr>
+					<td>Country:</td>
+					<td><input type="text" name="country" /></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" name="customerId" /></td>
+					<td><input type="submit" name="submit" value="Submit" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<script type="text/javascript" th:src="@{js/customer.js}"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Report</title>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<style>
+.axis {
+	font: 10px sans-serif;
+}
+
+.axis path, .axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+</style>
+</head>
+<body>
+	<div>
+		<form th:action="@{/report}" method="post" id="dateForm">
+			<table>
+				<tr>
+					<td>From:</td>
+					<td><input type="text" name="fromDate" /></td>
+					<td>To:</td>
+					<td><input type="text" name="toDate" /></td>
+					<td><input type="submit" name="submit" value="Search" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="graph"></div>
+	<script th:inline="javascript">
+		var root = [[${data}]];
+	</script>
+	<script type="text/javascript" th:src="@{js/report.js}"></script>
+	<script type="text/javascript" th:src="@{js/reportD4.js}"></script>
+</body>
+</html>

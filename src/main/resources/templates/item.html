@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Item</title>
+</head>
+<body>
+	<div>
+		<input id="btn_create" type="button" value="New Item" /> <input
+			id="btn_remove" type="button" value="Remove Item" />
+		<hr />
+		<div class="infobar" id="infomsg"></div>
+	</div>
+
+	<div class="scrollTable">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Item Name</th>
+					<th>Category</th>
+					<th>Price</th>
+					<th>Brand</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item:${items}">
+					<td><input type="checkbox" class="id" th:value="${item.id}" /></td>
+					<td class="name" th:text="${item.name}"></td>
+					<td class="category" th:text="${item.category}"></td>
+					<td class="price" th:text="${item.price}"></td>
+					<td class="brand" th:text="${item.brand}"></td>
+					<td><input type="button" class="rowbtn" value="Edit" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="popup" id="createItem">
+		<form th:action="@{/createItem}" method="post" id="createItemForm">
+			<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="name" /></td>
+				</tr>
+				<tr>
+					<td>Category:</td>
+					<td><input type="text" name="category" /></td>
+				</tr>
+				<tr>
+					<td>Price:</td>
+					<td><input type="text" name="price" /></td>
+				</tr>
+				<tr>
+					<td>Brand:</td>
+					<td><input type="text" name="brand" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" name="submit" value="Submit" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<div class="popup" id="editItem">
+		<form th:action="@{/editItem}" method="post">
+			<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="name" /></td>
+				</tr>
+				<tr>
+					<td>Category:</td>
+					<td><input type="text" name="category" /></td>
+				</tr>
+				<tr>
+					<td>Price:</td>
+					<td><input type="text" name="price" /></td>
+				</tr>
+				<tr>
+					<td>Brand:</td>
+					<td><input type="text" name="brand" /></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" name="id" /></td>
+					<td><input type="submit" name="submit" value="Submit" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<div class="popup" id="removeItem">
+		<form th:action="@{/removeItem}" method="post">
+			<p>Do you really want to Remove them ?</p>
+			<input type="hidden" name="itemArray" /> <input type="submit" name="submit" value="Submit" />
+		</form>
+	</div>
+	
+	<script type="text/javascript" th:src="@{js/item.js}"></script>
+</body>
+</html>

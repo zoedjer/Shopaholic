@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Logout</title>
+</head>
+<body>
+	<div>
+		<a id="link_logout" th:href="@{/logout}">Logout</a>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			$('#link_logout').click(function() {
+				$.removeCookie('curPage');
+			});
+		});
+	</script>
+</body>
+</html>

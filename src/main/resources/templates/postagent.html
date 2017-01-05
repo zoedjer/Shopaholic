@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Post Agent</title>
+</head>
+<body>
+	<div id="postTab">
+		<div class="ui-widget">
+			<input id="tags" type="text" /> <input id="btn" type="button" value="Search" />
+			<input id="btn_create" type="button" value="New Post Agent" /> <input
+				id="btn_remove" type="button" value="Remove Post Agent" />
+		</div>
+		<hr />
+		<div class="infobar" id="infomsg"></div>
+
+		<div class="scrollTable">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Post Name</th>
+						<th>Website</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="pa:${postagents}">
+						<td>
+							<input class="id" type="checkbox" th:value="${pa.id}" />
+						</td>
+						<td class="name" th:text="${pa.name}"></td>
+						<td class="website" th:text="${pa.website}"></td>
+						<td><input type="button" value="Edit" class="rowbtn" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!-- create post agent -->
+	<div  class="popup" id="createPost">
+		<form th:action="@{/createPostAgent}" method="post" id="createPostAgentForm">
+			<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="postName" /></td>
+				</tr>
+				<tr>
+					<td>Website:</td>
+					<td><input type="text" name="postWebsite" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" name="submit" value="Submit" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<!-- edit post agent -->
+	<div class="popup"  id="editPost">
+		<form th:action="@{/editPostAgent}" method="post">
+			<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="postName" /></td>
+				</tr>
+				<tr>
+					<td>Website:</td>
+					<td><input type="text" name="postWebsite" /></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" name="postId" /></td>
+					<td><input type="submit" name="submit" value="Edit" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+	<div class="popup" id="removePost"> 
+		<form th:action="@{/removePostAgent}" method="post">
+			<p>Do you really want to remove ?</p>
+			<input type="hidden" name="postArray" />
+			<input type="submit" name="submit" value="Yes" />
+		</form>
+	</div>
+
+	<script th:inline="javascript">
+		$(document).ready(function(){
+			
+			var pn = [[${postnames}]];
+
+			$('#tags').keyup(function() {
+				
+				$("#tags").autocomplete({
+					source : pn
+				});
+			});
+		});
+	</script>
+	<script type="text/javascript" th:src="@{js/postagent.js}"></script>
+</body>
+</html>
